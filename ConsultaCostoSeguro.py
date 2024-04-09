@@ -1,6 +1,5 @@
 from abc import ABC, abstractmethod
-
-from DatabaseImpl import DatabaseImpl
+from DatabaseImpl import *
 
 
 class ConsultaCostoSeguro(ABC):

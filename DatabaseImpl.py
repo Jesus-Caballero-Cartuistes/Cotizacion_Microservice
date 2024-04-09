@@ -26,20 +26,31 @@ class DatabaseImpl:
         
 
 
-    def obtener_costo_vida_base(edad: int):
+    def obtener_costo_vida_base(self, edad: int):
         """
         Método estático para obtener el costo de un seguro de vida basado en la edad.
         """
         # Lógica para obtener el costo de un seguro de vida basado en la edad
-        return 2000
+        collection = self.db['LifeInsurance']
+        data = collection.find_one(
+            {"edad_min": {"$lte": edad}, "edad_max": {"$gte": edad}})
+        return data['precio']
 
 
-    def obtener_costo_vida_beneficio(beneficio: str):
+
+    def obtener_costo_vida_beneficio(self, beneficio: str):
         """
         Método estático para obtener el costo de un seguro de vida basado en el beneficio adicional.
         """
         # Lógica para obtener el costo de un seguro de vida basado en la edad
-        return 0.8
+        collection = self.db['LifeInsurance']
+        document = collection.find_one({"beneficio": beneficio})
+        if document:
+            costo_carro = document['precio']
+            return costo_carro
+        else:
+            return -1
+
 
     def obtener_costo_carro(self, marca: str, referencia: str):
         """

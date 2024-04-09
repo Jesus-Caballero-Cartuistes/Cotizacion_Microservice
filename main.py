@@ -2,15 +2,15 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from datetime import datetime, timedelta
-from cotizacion import *
-from datos_poliza import *
+from Cotizacion import *
+from DatosPoliza import *
 
 app = FastAPI()
 
 
 @app.get("/")
 async def root():
-    return {"message": "Hello, FastAPI!"}
+    return {"Microservicio": "Gestión de Cotizaciones"}
 
 
 @app.post("/crear_poliza_moto/")

@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import Union
-from consulta_database import *
+from ConsultaCostoSeguro import *
 
 
 class Seguro(ABC):

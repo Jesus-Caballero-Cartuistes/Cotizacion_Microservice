@@ -10,6 +10,10 @@ class DatosPoliza(BaseModel, ABC):
     identificacion: int
     nombre: str
     apellido: str
+    tipo_identificacion: str
+    identificacion: int
+    nombre: str
+    apellido: str
 
 
 class PolizaCarro(DatosPoliza):

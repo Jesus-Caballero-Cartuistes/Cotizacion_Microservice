@@ -8,6 +8,14 @@ class DatosPoliza(BaseModel, ABC):
     """
     tipo_identificacion: str
     identificacion: int
+
+    """
+    Clase abstracta para los datos de una póliza.
+    """
+
+    """
+    Clase abstracta para los datos de una póliza.
+    """
     nombre: str
     apellido: str
 

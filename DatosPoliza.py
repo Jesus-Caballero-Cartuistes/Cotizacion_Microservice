@@ -8,6 +8,18 @@ class DatosPoliza(BaseModel, ABC):
     """
     tipo_identificacion: str
     identificacion: int
+
+    """
+    Clase abstracta para los datos de una póliza.
+    """
+
+    """
+    Clase abstracta para los datos de una póliza.
+    """
+    nombre: str
+    apellido: str
+    tipo_identificacion: str
+    identificacion: int
     nombre: str
     apellido: str
 
@@ -21,7 +33,26 @@ class PolizaCarro(DatosPoliza):
     ano: int
     estado: str
     uso: str
+    
+class PolizaCarro(DatosPoliza):
+    """
+    Clase concreta para una póliza de seguro de carro.
+    """
+    marca: str
+    referencia: str
+    ano: int
+    estado: str
+    uso: str
 
+class PolizaCarro(DatosPoliza):
+    """
+    Clase concreta para una póliza de seguro de carro.
+    """
+    marca: str
+    referencia: str
+    ano: int
+    estado: str
+    uso: str
 
 class PolizaMoto(DatosPoliza):
     """

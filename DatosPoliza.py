@@ -21,7 +21,16 @@ class PolizaCarro(DatosPoliza):
     ano: int
     estado: str
     uso: str
-
+    
+class PolizaCarro(DatosPoliza):
+    """
+    Clase concreta para una póliza de seguro de carro.
+    """
+    marca: str
+    referencia: str
+    ano: int
+    estado: str
+    uso: str
 
 class PolizaCarro(DatosPoliza):
     """

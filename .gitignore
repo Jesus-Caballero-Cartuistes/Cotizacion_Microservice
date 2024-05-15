@@ -1,14 +1,16 @@
-/gestion_cotizaciones_microservicio/_pycache_/
-/gestion_pagos_microservicio/_pycache_/
-/gestion_reclamos_microservicio/_pycache_/
-/gestion_respuestas_microservicio/_pycache_/
-
-/gestion_pagos_microservicio/GestionPagos/
-/gestion_cotizaciones_microservicio/GestionCotizacion/
-/gestion_reclamos_microservicio/GestionReclamos/
-/gestion_respuestas_microservicio/GestionRespuestas/
 
 tempCodeRunnerFile.py
 
 venv/
-__pycache__
+__pycache__/
+/Authentication_Microservice/__pycache__/
+/Policy_Management_Microservice/__pycache__/
+/Claims_Management_Microservice/__pycache__/
+/Authentication_Microservice/__pycache__/
+/Payment_Management_Microservice/__pycache__/
+
+/Authentication_Microservice/src/__pycache__/
+/Policy_Management_Microservice/src/__pycache__/
+/Claims_Management_Microservice/src/__pycache__/
+/Payment_Management_Microservice/src/__pycache__/
+/Authentication_Microservice/src/__pycache__/

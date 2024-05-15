@@ -49,15 +49,17 @@ class Database(ABC):
         pass
 
     @abstractmethod
-    def get_car_status_cost(self, status: str) -> float:
-        """
-        Abstract method to get the additional cost of car insurance based on the status from the database.
-        """
-        pass
-
-    @abstractmethod
     def get_car_usage_cost(self, usage: str) -> float:
         """
         Abstract method to get the additional cost of car insurance based on the usage from the database.
         """
+        pass
+
+    @abstractmethod
+    def get_displacement(self, plate: str) -> str:
+        pass    
+
+
+    @abstractmethod
+    def get_car_info(self, plate: str) -> dict:
         pass

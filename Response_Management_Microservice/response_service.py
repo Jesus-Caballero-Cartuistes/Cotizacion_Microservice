@@ -8,15 +8,19 @@ mongoDB = MongoDB()
 response_controller = ResponseControllerImpl(mongoDB)
 
 # Endpoint for response management
+
+
 @response_router.post("/responses/")
 async def create_response(response: Response):
     response_controller.create_response(response)
     return {"message": "Respuesta publicada correctamente"}
 
 # Get a response by ID
+
+
 @response_router.get("/responses/{response_id}")
-async def get_response(response_id: int):
-    response = response_controller.get_response(response_id)
-    if not response:
+async def get_responses(response_id: int):
+    responses = response_controller.get_responses(response_id)
+    if not responses:
         raise HTTPException(status_code=404, detail="Response not found")
-    return response
+    return responses

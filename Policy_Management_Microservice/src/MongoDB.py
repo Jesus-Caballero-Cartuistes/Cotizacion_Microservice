@@ -16,7 +16,24 @@ class MongoDB(Database):
         self.client = MongoClient(self.uri, server_api=ServerApi('1'))
         self.db = self.client.get_database('Prices')
         print("¡Conexión exitosa [Policy DB]!")
+        
+    def get_displacement(self, plate: str) -> str:
 
+        collection = self.client.get_database(
+            'Authentication').get_collection('Vehicles')
+        vehicle = collection.find_one({"plate": plate})
+        if vehicle:
+            return vehicle['displacement']
+        return None
+
+    def get_car_info(self, plate: str) -> dict:
+        collection = self.client.get_database(
+            'Authentication').get_collection('Vehicles')
+        vehicle = collection.find_one({"plate": plate})
+        if vehicle:
+            return {"reference": vehicle['reference'], "model": vehicle['model'], "year": vehicle['year'], "usage": vehicle['usage']}
+        return None
+    
     def get_motorcycle_cost(self, displacement: float) -> float:
         self.collection = self.db['Soat']
         data = self.collection.find_one({"tipo": "moto", "cilindrada_min": {
@@ -43,12 +60,12 @@ class MongoDB(Database):
         else:
             return 0
 
-    def get_car_cost(self, brand: str, reference: str) -> float:
+    def get_car_cost(self, model: str, reference: str) -> float:
         self.collection = self.db['CarPrices']
         data = self.collection.find_one(
-            {"marca": brand, "referencia": reference})
-        if data and 'precio' in data:
-            return float(data['precio'])
+            {"model": model, "reference": reference})
+        if data and 'price' in data:
+            return float(data['price'])
         else:
             return 0
 
@@ -60,14 +77,6 @@ class MongoDB(Database):
         else:
             return 0
 
-    def get_car_status_cost(self, status: str) -> float:
-        self.collection = self.db['CarPrices']
-        document = self.collection.find_one({status: {"$exists": True}})
-        if document:
-            return float(document[status])
-        else:
-            return -1
-
     def get_car_usage_cost(self, usage: str) -> float:
         self.collection = self.db['CarPrices']
         document = self.collection.find_one({usage: {"$exists": True}})
@@ -75,3 +84,5 @@ class MongoDB(Database):
             return float(document[usage])
         else:
             return 0
+
+

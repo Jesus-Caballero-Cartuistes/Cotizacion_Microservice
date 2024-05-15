@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from Authentication_Microservice.authentication_service import authentication_router
 from Claims_Management_Microservice.claim_service import claim_router
@@ -8,6 +9,13 @@ from Payment_Management_Microservice.payment_service import payment_router
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins =["*"],
+    allow_methods =["*"],
+    allow_headers =["*"],
+    
+)
 # Agregar routers al app principal
 app.include_router(authentication_router, prefix="/auth",
                    tags=["Authentication Microservice"])

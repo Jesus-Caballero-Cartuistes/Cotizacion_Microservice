@@ -36,9 +36,21 @@ class CostController(ABC):
         pass
 
     @abstractmethod
-    def query_additional_car_cost(self, year: int, status: str, usage: str) -> float:
+    def query_additional_car_cost(self, year: int, usage: str) -> float:
         """
         Abstract method to query additional cost of car insurance from the database.
+        """
+        pass
+
+    def query_motorcycle_displacement(self, plate: str) -> int:
+        """
+        Method to query motorcycle insurance cost from the database.
+        """
+        pass
+
+    def query_car_info(self, plate: str) -> dict:
+        """
+        Method to query motorcycle insurance cost from the database.
         """
         pass
 
@@ -51,7 +63,19 @@ class CostControllerImpl(CostController):
     def __init__(self, database_impl: MongoDB):
         self.database_impl = database_impl
 
-    def query_motorcycle_cost(self, displacement: float) -> float:
+    def query_motorcycle_displacement(self, plate: str) -> int:
+        """
+            Method to query motorcycle insurance cost from the database.
+            """
+        return self.database_impl.get_displacement(plate)
+
+    def query_car_info(self, plate: str) -> dict:
+        """
+        Method to query motorcycle insurance cost from the database.
+        """
+        return self.database_impl.get_car_info(plate)
+
+    def query_motorcycle_cost(self, displacement: int) -> float:
         """
         Method to query motorcycle insurance cost from the database.
         """
@@ -81,14 +105,12 @@ class CostControllerImpl(CostController):
         """
         return self.database_impl.get_car_cost(model, reference)
 
-    def query_additional_car_cost(self, year: int, status: str, usage: str) -> float:
+    def query_additional_car_cost(self, year: int, usage: str) -> float:
         """
         Method to query additional cost of car insurance from the database.
         """
         total_additional_multiplier = self.database_impl.get_car_year_cost(
             year)
-        total_additional_multiplier += self.database_impl.get_car_status_cost(
-            status)
         total_additional_multiplier += self.database_impl.get_car_usage_cost(
             usage)
         return total_additional_multiplier

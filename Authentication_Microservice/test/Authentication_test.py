@@ -10,7 +10,7 @@ from pymongo import MongoClient
 from fastapi.testclient import TestClient
 import pytest
 from Authentication_Microservice.src.MongoDB import MongoDB
-from Authentication_Microservice.src.AuthenticationRequest import AuthenticationRequest
+from VehicleAuthenticationRequest import AuthenticationRequest
 from main import app
 
 

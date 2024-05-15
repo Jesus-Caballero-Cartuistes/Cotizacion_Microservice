@@ -1,17 +1,17 @@
+from Policy_Management_Microservice.src.Quotation import CarQuotation, MotorcycleQuotation, LifeQuotation
+from Policy_Management_Microservice.src.QuotationMethods import MotorcycleQuotationMethods, CarQuotationMethods, LifeQuotationMethods
+from Policy_Management_Microservice.policy_service import mongoDB
+from main import app
+from datetime import datetime, timedelta
+from fastapi import FastAPI
+from httpx import AsyncClient
+import pytest
+from fastapi.testclient import TestClient
 import os
 import sys
 from fastapi import HTTPException
 sys.path.append(os.path.abspath(os.path.join(
     os.path.dirname(__file__), '..', '..')))
-from fastapi.testclient import TestClient
-import pytest
-from httpx import AsyncClient
-from fastapi import FastAPI
-from datetime import datetime, timedelta
-from main import app
-from Policy_Management_Microservice.policy_service import mongoDB
-from Policy_Management_Microservice.src.Quotation import MotorcycleQuotation, CarQuotation, LifeQuotation
-from Policy_Management_Microservice.src.Policy import CarPolicy, MotorcyclePolicy, LifePolicy
 
 # Importa tus definiciones de política y el enrutador aquí
 
@@ -19,6 +19,7 @@ from Policy_Management_Microservice.src.Policy import CarPolicy, MotorcyclePolic
 @pytest.fixture
 def test_client():
     return TestClient(app)
+
 
 def test_create_motorcycle_policy(test_client):
     """
@@ -40,7 +41,6 @@ def test_create_motorcycle_policy(test_client):
     assert policy["start_date"] == datetime.now().strftime('%Y-%m-%d')
     assert policy["end_date"] == (datetime.now() + timedelta(days=365)).strftime(
         '%Y-%m-%d')
-
 
 
 def test_create_car_policy(test_client):
@@ -66,7 +66,6 @@ def test_create_car_policy(test_client):
     assert policy["start_date"] == datetime.now().strftime('%Y-%m-%d')
     assert policy["end_date"] == (datetime.now() + timedelta(days=365)).strftime(
         '%Y-%m-%d')
-
 
 
 def test_create_life_policy(test_client):

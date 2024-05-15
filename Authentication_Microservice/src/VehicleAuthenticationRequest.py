@@ -2,35 +2,40 @@ from abc import ABC
 from pydantic import BaseModel
 
 
-class Policy(BaseModel, ABC):
+class VehicleAuthenticationRequest(BaseModel, ABC):
     """
     Abstract class for policy data.
     """
-    identification_type: str
     identification: int
+    expDate: str
     first_name: str
     last_name: str
+    cost: int
+    start_date: str
+    end_date: str
+    email: str
+    plate: str
 
 
-class CarPolicy(Policy):
+class CarAuthenticationRequest(VehicleAuthenticationRequest):
     """
     Concrete class for car insurance policy.
     """
     reference: str
     model: str
     year: int
-    status: str
     usage: str
 
 
-class MotorcyclePolicy(Policy):
+class MotorcycleAuthenticationRequest(VehicleAuthenticationRequest):
     """
     Concrete class for motorcycle insurance policy.
     """
     displacement: float
+    
 
 
-class LifePolicy(Policy):
+class LifeAuthenticationRequest(VehicleAuthenticationRequest):
     """
     Concrete class for life insurance policy.
     """

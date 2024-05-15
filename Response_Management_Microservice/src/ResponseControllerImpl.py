@@ -13,8 +13,8 @@ class ResponseControllerImpl(ResponseController):
     def create_response(self, response: Response):
         self.database.save_response(response)
 
-    def get_response(self, response_id: int):
-        response = self.database.get_response_by_id(response_id)
+    def get_responses(self, response_id: int):
+        response = self.database.get_responses_by_id(response_id)
         if not response:
-            return None 
+            return None
         return response

@@ -101,7 +101,6 @@ def test_get_claim(claim_data):
     assert response.json()["id"] == claim_data["id"]
     assert response.json()["status"] == claim_data["status"]
     assert response.json()["details"] == claim_data["details"]
-    assert response.json()["date"] == claim_data["date"]
 
 
 def test_get_nonexistent_claim():

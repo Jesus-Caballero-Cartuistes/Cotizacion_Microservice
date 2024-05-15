@@ -13,5 +13,5 @@ class ResponseController(ABC):
         pass
 
     @abstractmethod
-    def get_response(self, response_id: int):
+    def get_responses(self, response_id: int):
         pass

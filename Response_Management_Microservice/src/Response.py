@@ -7,6 +7,9 @@ from fastapi import FastAPI, HTTPException
 
 class Response(BaseModel):
     id: int
+    name: str
+    lastName: str
+    email: str
     status: str
     claim_description: str
     manager_response: str
